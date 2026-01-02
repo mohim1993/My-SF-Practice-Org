@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>50.0</apiVersion>
+    <isExposed>true</isExposed>
+
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <property name="requiredBool" label="Required" type="Boolean" required="true" />
+            <property name="label" label="Label" type="String" required="true" />
+            <property name="optionJSON" label="Options JSON" type="String" required="true" />
+           
+        </targetConfig>
+        <targetConfig targets="lightning__HomePage">
+            <property name="requiredBool" label="Required" type="Boolean" required="true" />
+            <property name="label" label="Label" type="String" required="true" />
+            <property name="optionJSON" label="Options JSON" type="String" required="true" />
+           
+        </targetConfig>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="requiredBool" label="Required" type="Boolean" required="true" />
+            <property name="label" label="Label" type="String" required="true" />
+            <property name="optionJSON" label="Options JSON" type="String" required="true" />
+            <property name="selectedvalue" label="selectedvalue" type="String" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

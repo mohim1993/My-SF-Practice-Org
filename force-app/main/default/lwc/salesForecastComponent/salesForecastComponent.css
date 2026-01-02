@@ -1,0 +1,13 @@
+.scroll-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+.scroll-container table {
+    min-width: 1200px;
+    width: max-content;
+}

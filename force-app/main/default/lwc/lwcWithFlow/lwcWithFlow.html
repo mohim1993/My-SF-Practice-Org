@@ -1,0 +1,49 @@
+<template>
+    <div class="slds-text-heading_small">
+        <strong>{label}<template if:true={requiredBool}><span style="color: red;"> *</span></template></strong>
+    </div>
+
+    <lightning-card  variant="Narrow"  title="" icon-name="">
+        <table class="slds-align_absolute-center">
+            <tr>
+                <template for:each={parsedOptions} for:item="option">
+                    <td key={option} class="slds-clearfix slds-p-top_x-large">
+                        <div class="slds-text-heading_small slds-align_absolute-center">
+                           <span class="slds-p-left_x-large">{option.label}</span>
+                        </div>
+
+                        <div class="slds-align_absolute-center slds-p-top_medium">
+                            <lightning-input class="slds-p-left_xx-large" type="radio" value={option.value} onchange={onRadioButtonChange} data-id="checkbox" ></lightning-input>
+                        </div>
+                    </td>
+                </template>
+            </tr>
+        </table>
+
+        <!-- <div style="margin-top:-20px; display:block;"></div> -->
+        
+        <table style="margin:0 auto; width:50%;">
+            <tr>
+                <td class="slds-float_left">
+                    <strong>Strongly Disagree</strong> 
+                </td>
+                <td class="slds-float_right">
+                    <strong>Strongly Agree</strong> 
+                </td>
+            </tr>
+        </table>
+
+      <!--  <lightning-radio-group 
+            name="radioGroup"
+            options={options}
+            label="Radio Group"
+            value={value}
+            required={requiredBool}
+            type="radio"
+            onchange={onchangeRadioButton}
+            class="chs-radio-horizontal">
+        </lightning-radio-group>-->
+    </lightning-card>
+
+    <div class="slds-p-top_x-large">Selcted Value Is: {selectedvalue}</div> 
+</template>

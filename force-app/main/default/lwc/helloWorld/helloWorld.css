@@ -1,0 +1,7 @@
+td[data-label="Name"] {
+background-color:red;
+}
+
+td[data-label="Email"] {
+font-weight: bold;
+}

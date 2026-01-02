@@ -1,0 +1,3 @@
+<apex:page standardController="Account" extensions="Askia_MyApexExtension">
+    <apex:outputText value="{!account.Name}" />
+</apex:page>

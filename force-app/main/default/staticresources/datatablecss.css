@@ -1,0 +1,11 @@
+td[data-label="Email"] {
+background-color:blue;
+}
+td[data-label="Phone"] {
+background-color:red;
+}
+
+/*td[data-label="Email"] {
+background-color:red;
+font-weight: bold;
+}*/

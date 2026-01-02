@@ -1,0 +1,16 @@
+<template>
+  <lightning-card title="Chat">
+    <div class="chat-window">
+      <template for:each={messages} for:item="msg">
+        <div key={msg.Id} class={msg.cssClass}>
+          <b>{msg.SenderName}:</b> {msg.Text__c}
+        </div>
+      </template>
+    </div>
+
+    <div class="chat-input">
+      <lightning-input value={newMessage} onchange={handleInput} placeholder="Type a message..."></lightning-input>
+      <lightning-button label="Send" onclick={sendMessage}></lightning-button>
+    </div>
+  </lightning-card>
+</template>

@@ -1,0 +1,81 @@
+<template>
+    <lightning-card title="Sales Forecast">
+        <div class="slds-p-horizontal_medium">
+
+            <!-- Buttons at the top -->
+            <div class="slds-m-bottom_medium">
+                <template if:false={isEditMode}>
+                    <lightning-button variant="brand" label="Edit" onclick={handleEditClick}></lightning-button>
+                </template>
+                <template if:true={isEditMode}>
+                    <lightning-button variant="brand" label="Save" onclick={handleSaveClick} class="slds-m-right_small"></lightning-button>
+                    <lightning-button variant="neutral" label="Cancel" onclick={handleCancelClick}></lightning-button>
+                </template>
+            </div>
+
+            <!-- Scrollable Forecast Table -->
+            <template if:true={groupedData}>
+                <div class="scroll-container" style="overflow-x: auto;">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                        <thead>
+                            <!-- First row: Headers with blue background -->
+                            <tr style="background-color: #0070d2; color: white;">
+                            <th style="min-width: 120px;background-color:blue;color: white;">Region</th>
+                            <th style="min-width: 120px;background-color:blue;color: white;">Territory</th>
+                            <th style="min-width: 160px;background-color:blue;color: white;">Account</th>
+                            <template for:each={monthLabels} for:item="month">
+                                <th key={month.key} style="min-width: 100px; text-align: center; background-color:blue;color:white;">{month.label}</th>
+                            </template>
+                            </tr>
+
+                            <!-- Second row: Totals with sky blue background -->
+                            <tr style="background-color: blue;">
+                                <th colspan="3" style="background-color: #87CEEB; color:white;"><strong>Total</strong></th>
+                                <template for:each={totalValuesArray} for:item="monthTotal">
+                                    <th key={monthTotal.key} style="background-color: #87CEEB; color:white;"><strong>{monthTotal.value}</strong></th>
+                                </template>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <template for:each={groupedData} for:item="group">
+                                <template for:each={group.rows} for:item="row">
+                                    <tr key={row.recordId}>
+                                        <template if:true={row.isFirstRegionRow}>
+                                            <td rowspan={group.rows.length}>{row.region}</td>
+                                        </template>
+                                        <template if:true={row.isFirstTerritoryRow}>
+                                            <td rowspan={row.territoryRowCount}>{row.territory}</td>
+                                        </template>
+                                        <td>{row.name}</td>
+                                        <template for:each={row.monthValues} for:item="monthValue">
+                                            <td key={monthValue.key}>
+                                                <template if:true={isEditMode}>
+                                                    <lightning-input
+                                                        type="number"
+                                                        variant="label-hidden"
+                                                        value={monthValue.value}
+                                                        data-id={row.recordId}
+                                                        data-field={monthValue.key}
+                                                        onchange={handleInputChange}>
+                                                    </lightning-input>
+                                                </template>
+                                                <template if:false={isEditMode}>
+                                                    {monthValue.value}
+                                                </template>
+                                            </td>
+                                        </template>
+                                    </tr>
+                                </template>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <div class="slds-text-color_error slds-m-top_medium">{error}</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

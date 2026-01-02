@@ -1,0 +1,5 @@
+<template>
+    <lightning-input label="Card Number" onchange={handleCardNumberChange}></lightning-input>
+    <div if:true={isValid}>Card type: {type}</div>
+    <div if:false={isValid}>Invalid card number</div>
+</template>
